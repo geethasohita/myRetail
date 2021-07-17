@@ -36,6 +36,13 @@ def create_product():
 def modify_product(product_id):
     record = json.loads(request.data)
     product = Product.objects(product_id=product_id).first()
-    product.modify(product_id=product_id, product_name=record['product_name'],
+    product.modify(product_name=record['product_name'],
                    product_description=record['product_description'], current_price=record['current_price'])
+    return product.to_json()
+
+
+@app.route('/product/<product_id>', methods=['DELETE'])
+def delete_product(product_id):
+    product = Product.objects(product_id=product_id).first()
+    product.delete()
     return jsonify(product)
