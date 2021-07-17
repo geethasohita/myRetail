@@ -1,8 +1,14 @@
 from flask import Flask
-from flask_pymongo import PyMongo
+from flask_mongoengine import MongoEngine
 
 app = Flask(__name__)
-mongodb_client = PyMongo(app, uri="mongodb://localhost:27017/myretail")
-db = mongodb_client.db
 
-from app import routes
+app.config['MONGODB_SETTINGS'] = {
+    'db': 'myretail',
+    'host': 'localhost',
+    'port': 27017
+}
+db = MongoEngine()
+db.init_app(app)
+
+from app import routes, models
