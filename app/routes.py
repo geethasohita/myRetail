@@ -14,13 +14,13 @@ def index():
 @app.route('/product', methods=['GET'])
 def get_product():
     products = Product.objects.exclude('id')
-    return jsonify([json.loads(product.to_json()) for product in products])
+    return jsonify([json.loads(product.to_json()) for product in products]), 200
 
 
 @app.route('/product/<product_id>', methods=['GET'])
 def get_product_by_id(product_id):
     product = Product.objects.exclude('id')(product_id=product_id).first()
-    return jsonify([json.loads(product.to_json())])
+    return jsonify([json.loads(product.to_json())]), 200
 
 
 @app.route('/product', methods=['POST'])
@@ -29,7 +29,7 @@ def create_product():
     product = Product(product_id=record['product_id'], product_name=record['product_name'],
                       product_description=record['product_description'], current_price=record['current_price'])
     product.save()
-    return jsonify([json.loads(product.to_json())])
+    return jsonify([json.loads(product.to_json())]), 201
 
 
 @app.route('/product/<product_id>', methods=['PUT'])
@@ -38,11 +38,11 @@ def modify_product(product_id):
     product = Product.objects(product_id=product_id).first()
     product.modify(product_name=record['product_name'],
                    product_description=record['product_description'], current_price=record['current_price'])
-    return product.to_json()
+    return jsonify(product), 202
 
 
 @app.route('/product/<product_id>', methods=['DELETE'])
 def delete_product(product_id):
     product = Product.objects(product_id=product_id).first()
     product.delete()
-    return jsonify(product)
+    return jsonify(product), 202
