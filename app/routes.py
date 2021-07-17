@@ -1,9 +1,17 @@
+import json
+
+from flask import jsonify
+
 from app import app
-from app.models import Product, CurrentPrice
+from app.models import Product
 
 
 @app.route('/')
 def index():
-    current_price = CurrentPrice(value=12.3, currency_code='USD')
-    Product(product_id='1234', product_name='test_product', product_description='test', current_price=current_price).save()
     return 'Welcome to myRetail'
+
+
+@app.route('/product', methods=['GET'])
+def get_product():
+    products = Product.objects()
+    return jsonify([json.loads(product.to_json()) for product in products])
