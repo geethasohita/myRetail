@@ -17,6 +17,12 @@ def get_product():
     return jsonify([json.loads(product.to_json()) for product in products])
 
 
+@app.route('/product/<product_id>', methods=['GET'])
+def get_product_by_id(product_id):
+    product = Product.objects.exclude('id')(product_id=product_id).first()
+    return jsonify([json.loads(product.to_json())])
+
+
 @app.route('/product', methods=['POST'])
 def create_product():
     record = json.loads(request.data)
