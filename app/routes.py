@@ -30,3 +30,12 @@ def create_product():
                       product_description=record['product_description'], current_price=record['current_price'])
     product.save()
     return jsonify([json.loads(product.to_json())])
+
+
+@app.route('/product/<product_id>', methods=['PUT'])
+def modify_product(product_id):
+    record = json.loads(request.data)
+    product = Product.objects(product_id=product_id).first()
+    product.modify(product_id=product_id, product_name=record['product_name'],
+                   product_description=record['product_description'], current_price=record['current_price'])
+    return jsonify(product)
