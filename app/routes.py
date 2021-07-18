@@ -7,7 +7,6 @@ from app.services import MyRetailService
 
 service = MyRetailService()
 
-
 @app.route('/')
 def index():
     return 'Welcome to myRetail'
