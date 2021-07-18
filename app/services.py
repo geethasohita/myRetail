@@ -33,5 +33,4 @@ class MyRetailService:
         if not product:
             raise BadRequestException(f'Product with id {product_id} does not exist in database.')
         product.delete()
-        return product
 
