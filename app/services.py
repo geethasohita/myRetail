@@ -1,5 +1,5 @@
 from app.models import Product
-from exceptions import BadRequestException
+from app.exceptions import BadRequestException
 
 
 class MyRetailService:
