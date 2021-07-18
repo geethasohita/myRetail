@@ -5,7 +5,7 @@ import requests
 
 class RedSkyService:
     def get_product_name(self, product_id):
-        product_name = None
+        product_name = 'Name not available in redsky'
         try:
             url = f'https://redsky.target.com/v3/pdp/tcin/{product_id}?key=candidate'
             response = requests.get(url)

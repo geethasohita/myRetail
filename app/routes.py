@@ -24,13 +24,13 @@ def get_product():
 @app.route('/product/<product_id>', methods=['GET'])
 def get_product_by_id(product_id):
     product = service.get_product_by_id(product_id)
-    return jsonify([json.loads(product.to_json())]), 200
+    return jsonify(json.loads(product.to_json())), 200
 
 
 @app.route('/product', methods=['POST'])
 def create_product():
     record = json.loads(request.data)
-    product = service.create_product(product_id=record['product_id'], product_name=record['product_name'],
+    product = service.create_product(product_id=record['product_id'],
                                      product_description=record['product_description'],
                                      current_price=record['current_price'])
     return jsonify([json.loads(product.to_json())]), 201
@@ -39,7 +39,7 @@ def create_product():
 @app.route('/product/<product_id>', methods=['PUT'])
 def modify_product(product_id):
     record = json.loads(request.data)
-    product = service.modify_product(product_id=product_id, product_name=record['product_name'],
+    product = service.modify_product(product_id=product_id,
                                      product_description=record['product_description'],
                                      current_price=record['current_price'])
     return jsonify(product), 202
