@@ -44,5 +44,6 @@ def modify_product(product_id):
 
 @app.route('/product/<product_id>', methods=['DELETE'])
 def delete_product(product_id):
-    product = service.delete_product(product_id)
-    return jsonify(product), 202
+    service.delete_product(product_id)
+    response = {'message': f'Product {product_id} is deleted'}
+    return jsonify(response)
