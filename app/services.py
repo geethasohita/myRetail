@@ -2,15 +2,16 @@ from app.models import Product
 from app.exceptions import BadRequestException
 from app.redsky import RedSkyService
 
-redsky_service = RedSkyService()
-
 
 class MyRetailService:
+
+    def __init__(self, redsky_service):
+        self.redsky_service = redsky_service
 
     def get_product(self):
         products = Product.objects.exclude('id')
         for product in products:
-            redsky_product_name = redsky_service.get_product_name(product.product_id)
+            redsky_product_name = self.redsky_service.get_product_name(product.product_id)
             product.product_name = redsky_product_name
         return products
 
@@ -18,7 +19,7 @@ class MyRetailService:
         product = Product.objects.exclude('id')(product_id=product_id).first()
         if product is None:
             raise BadRequestException(f'Product with id {product_id} does not exist in database.')
-        redsky_product_name = redsky_service.get_product_name(product_id)
+        redsky_product_name = self.redsky_service.get_product_name(product_id)
         product.product_name = redsky_product_name
 
         return product

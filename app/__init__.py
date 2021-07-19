@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 db_uri = os.environ.get('DATABASE_URI', None)
 if not db_uri:
-    db_uri = 'mongodb://localhost:27017/myretail'
+    db_uri = 'mongomock://localhost'
 app.config['MONGODB_SETTINGS'] = {
     'host': db_uri
 }

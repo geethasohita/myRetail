@@ -6,13 +6,12 @@ from app import app
 from app.redsky import RedSkyService
 from app.services import MyRetailService
 
-service = MyRetailService()
+redsky_servie = RedSkyService()
+service = MyRetailService(redsky_servie)
 
 
 @app.route('/')
 def index():
-    redsky_service = RedSkyService()
-    redsky_service.get_product_name('13860428')
     return 'Welcome to myRetail'
 
 
