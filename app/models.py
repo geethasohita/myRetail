@@ -3,7 +3,7 @@ from app import db
 
 class CurrentPrice(db.EmbeddedDocument):
     value = db.FloatField()
-    currency_code = db.StringField()  # TODO : change this to enum
+    currency_code = db.StringField()
 
 
 class Product(db.Document):
