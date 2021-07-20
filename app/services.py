@@ -1,6 +1,5 @@
 from app.models import Product
 from app.exceptions import BadRequestException
-from app.redsky import RedSkyService
 
 
 class MyRetailService:

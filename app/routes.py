@@ -6,8 +6,8 @@ from app import app
 from app.redsky import RedSkyService
 from app.services import MyRetailService
 
-redsky_servie = RedSkyService()
-service = MyRetailService(redsky_servie)
+redsky_service = RedSkyService()
+service = MyRetailService(redsky_service)
 
 
 @app.route('/')

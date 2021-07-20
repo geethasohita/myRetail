@@ -1,3 +1,5 @@
+certifi==2021.5.30
+charset-normalizer==2.0.3
 click==8.0.1
 colorama==0.4.4
 dnspython==2.1.0
@@ -13,8 +15,11 @@ Jinja2==3.0.1
 MarkupSafe==2.0.1
 MongoAlchemy==0.19
 mongoengine==0.23.1
+mongomock==3.23.0
 pymongo==3.12.0
+requests==2.26.0
+sentinels==1.0.0
+six==1.16.0
+urllib3==1.26.6
 Werkzeug==2.0.1
 WTForms==2.3.3
-
-requests~=2.26.0
