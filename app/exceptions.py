@@ -22,5 +22,5 @@ def handle_exception(err):
 
 @app.errorhandler(500)
 def handle_500exception(err):
-    response = {'error': 'Unknown error', 'message': 'Unknown error. Please contact administrator.'}
+    response = {'error': 'Unknown error', 'message': 'Unknown error. Please contact the administrator.'}
     return jsonify(response), 500
