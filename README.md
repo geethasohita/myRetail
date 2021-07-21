@@ -2,7 +2,7 @@
 
 ![example workflow](https://github.com/geethasohita/myRetail/actions/workflows/github-actions.yml/badge.svg)
 
-This is Python-Flask application using MongoDB as Database. 
+This is Python-Flask application using MongoDB as Database 
 <br><br>
 The application is deployed in [Heroku](https://myretailapp.herokuapp.com/) which is connected to [MongoDB Atlas](https://cloud.mongodb.com/v2/60f3634ae8541e66416796fd#clusters) in cloud.
 The [postman collection](https://github.com/geethasohita/myRetail/blob/main/myretail.postman_collection.json) has details related to all the endpoints for doing CRUD operations on resource `Product`
